@@ -306,14 +306,15 @@ export namespace Modding {
 	export function getPropertyDecorators<T extends AnyDecorator>(
 		obj: object,
 		id?: string,
-	): Map<string, { arguments: DecoratorParameters<T> }> {
-		const decorators = new Map<string, { arguments: DecoratorParameters<T> }>();
+	): Array<{ property: string, decorator: { arguments: DecoratorParameters<T> } }> {
+		// const decorators = new Map<string, { arguments: DecoratorParameters<T> }>();
+		const decorators: Array<{ property: string, decorator: { arguments: DecoratorParameters<T> } }> = [];
 		assert(id !== undefined);
 
 		for (const prop of Reflect.getProperties(obj)) {
 			const decorator = getDecorator<T>(obj, prop, id);
 			if (decorator) {
-				decorators.set(prop, decorator);
+				decorators.push({ property: prop, decorator: decorator });
 			}
 		}
 

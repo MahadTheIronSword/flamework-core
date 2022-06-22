@@ -24,7 +24,7 @@
 		"declaration": true,
 		"plugins": [
 			{
-				"transform": "../flamework-transformer",
+				"transform": "rbxts-transformer-flamework",
 				"$rbxpackmode$": true,
 				"hashPrefix": "$",
 			}
